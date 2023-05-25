@@ -1,8 +1,8 @@
 from jinja2 import Environment, FileSystemLoader
 import json
 
-TEMPLATE_NAME = 'json_render.html'
-DATA_NAME = 'Example Scenario.json'
+TEMPLATE_NAME = 'story.html'
+DATA_NAME = 'story.json'
 SAVE_DIR = './output'
 
 with open(f'./data/{DATA_NAME}') as f:
@@ -10,7 +10,7 @@ with open(f'./data/{DATA_NAME}') as f:
 
 env = Environment(loader=FileSystemLoader('templates'))
 template = env.get_template(TEMPLATE_NAME)
-output = template.render(json_data=data)
+output = template.render(data=data)
 
-with open(f'{SAVE_DIR}/{DATA_NAME[:-4]}.html', 'w') as f:
+with open(f'{SAVE_DIR}/{DATA_NAME[:-5]}.html', 'w') as f:
     f.write(output)
